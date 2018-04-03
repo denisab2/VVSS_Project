@@ -1,5 +1,7 @@
 package controller;
 
+import exceptions.InvalidIdException;
+import exceptions.InvalidNameException;
 import org.junit.Before;
 import org.junit.Test;
 import repository.MemberRepository;
@@ -35,7 +37,7 @@ public class MemberControllerTest {
                 String name = "ana";
                 ctrl.addMember(name, -1);
                 assertTrue(false);
-            } catch (NumberFormatException e) {
+            } catch (InvalidIdException e) {
                 assertTrue(true);
             }
         }
