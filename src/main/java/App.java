@@ -11,7 +11,7 @@ public class App {
 			MemberRepository repo = new MemberRepository();
 		
 			MemberController ctrl = new MemberController(repo);
-		
+
 			MemberUI console = new MemberUI(ctrl);
 			console.Run();
 		
