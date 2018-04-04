@@ -18,11 +18,6 @@ public class MemberControllerTest {
 
     private MemberController ctrl = new MemberController(repo);
 
-    @Before
-    public void setUp() throws Exception {
-        Member m = new Member("ana", 1);
-        repo.addMember(m);
-    }
 
     @Test
     public void addMember1() throws Exception {
