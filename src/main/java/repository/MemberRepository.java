@@ -65,7 +65,7 @@ public class MemberRepository {
          System.err.println(ex.getMessage());
      }
 	}
-	private boolean checkIdUnique(Member m){
+	public boolean checkIdUnique(Member m){
 		for (Member mem : members)
 			if (mem.getId() == m.getId())
 				return false;

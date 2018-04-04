@@ -7,6 +7,7 @@ import java.util.Scanner;
 import exceptions.DuplicateKeyException;
 import exceptions.InvalidIdException;
 import exceptions.InvalidNameException;
+import exceptions.InvalidTypeException;
 import model.*;
 import controller.MemberController;;
 
@@ -99,12 +100,16 @@ public class MemberUI {
 					String idS = in.nextLine();
 					int idInt=Integer.parseInt(idS);
 
-					Entry e= new Entry(type, valueInt, idInt);
-					ctrl.addEntry(e);
+
+					ctrl.addEntry(type, valueInt, idInt);
 					System.out.println("Operation successful.");
 				}
 				catch (NumberFormatException e){
 					System.out.println("This value must be an integer.");
+				} catch (InvalidIdException e) {
+					e.printStackTrace();
+				} catch (InvalidTypeException e) {
+					e.printStackTrace();
 				}
 
 

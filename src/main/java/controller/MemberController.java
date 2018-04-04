@@ -3,6 +3,7 @@ package controller;
 import exceptions.DuplicateKeyException;
 import exceptions.InvalidIdException;
 import exceptions.InvalidNameException;
+import exceptions.InvalidTypeException;
 import repository.MemberRepository;
 
 import model.Member;
@@ -38,9 +39,21 @@ public class MemberController {
         mr.addMember(aMemebr);
     }
 
-    public void addEntry(Entry oneEntry) {
-        mr.addEntry(oneEntry);    	
+
+    public void addEntry(String type,int valueInt,int idInt) throws InvalidTypeException, InvalidIdException {
+
+        if(!type.equals("income") && !type.equals("cost"))
+            throw new InvalidTypeException();
+        invalidIdException.validate(idInt);
+
+        if(!mr.checkIdUnique(new Member("", valueInt)))
+            throw new InvalidIdException("Id does not exist.");
+
+
+        Entry oneEntry = new Entry(type, valueInt, idInt);
+        mr.addEntry(oneEntry);
     }
+
 
      public List<Entry> allEntries() {
         

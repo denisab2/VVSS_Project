@@ -2,6 +2,8 @@ package controller;
 
 import exceptions.InvalidIdException;
 import exceptions.InvalidNameException;
+import model.Member;
+import org.junit.Before;
 import org.junit.Test;
 import repository.MemberRepository;
 
@@ -15,6 +17,12 @@ public class MemberControllerTest {
     private MemberRepository repo = new MemberRepository();
 
     private MemberController ctrl = new MemberController(repo);
+
+    @Before
+    public void setUp() throws Exception {
+        Member m = new Member("ana", 1);
+        repo.addMember(m);
+    }
 
     @Test
     public void addMember1() throws Exception {
