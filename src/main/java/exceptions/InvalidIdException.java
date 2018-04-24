@@ -10,10 +10,10 @@ public class InvalidIdException extends Exception {
         super(s);
     }
 
-    public void validate(int id) throws InvalidIdException{
+    public boolean validate(int id) throws InvalidIdException{
         if (id < 0)
-            throw new InvalidIdException("Id must be positive.");
-
+            return false;
+        return true;
 
     }
 

@@ -1,5 +1,6 @@
 package controller;
 
+import exceptions.DuplicateKeyException;
 import exceptions.InvalidIdException;
 import exceptions.InvalidNameException;
 import model.Member;
@@ -148,6 +149,21 @@ public class MemberControllerTest {
             assertEquals(initialLength+1,repo.getMembers().size());
         } catch (Exception e) {
             assertTrue(false);
+        }
+    }
+
+    @Test
+    public void addMember10 () throws Exception {
+
+        try {
+
+            int id = 1;
+            String name = "a";
+            ctrl.addMember(name, id);
+            ctrl.addMember(name, id);
+            assertTrue(false);
+        } catch (DuplicateKeyException e) {
+            assertTrue(true);
         }
     }
 }

@@ -32,7 +32,8 @@ public class MemberController {
     public void addMember(String name, int id) throws InvalidNameException, DuplicateKeyException, InvalidIdException {
 
         nameException.validate(name);
-        invalidIdException.validate(id);
+        if(!invalidIdException.validate(id))
+            throw new InvalidIdException("Id not valid");
 
         Member aMemebr = new Member(name,id);
 
@@ -44,9 +45,10 @@ public class MemberController {
 
         if(!type.equals("income") && !type.equals("cost"))
             throw new InvalidTypeException();
-        invalidIdException.validate(idInt);
+        if(!invalidIdException.validate(idInt))
+            throw new InvalidIdException("Id not valid");
 
-        if(!mr.checkIdUnique(new Member("", valueInt)))
+        if(mr.checkIdUnique(new Member("", valueInt)))
             throw new InvalidIdException("Id does not exist.");
 
 
