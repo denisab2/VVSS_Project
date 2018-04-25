@@ -59,9 +59,7 @@ public class MemberController {
 
      public List<Entry> allEntries() {
         
-    	
-        List<Entry> allE= new ArrayList<>();
-        allE = this.mr.getAllEntries();
-        return allE;
+         return this.mr.getAllEntries();
+
     }
 } 
