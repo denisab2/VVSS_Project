@@ -22,6 +22,4 @@ public class BigBangIntegrationTest {
         ctrl.allEntries();
         assertTrue(true);
     }
-
-
 }
